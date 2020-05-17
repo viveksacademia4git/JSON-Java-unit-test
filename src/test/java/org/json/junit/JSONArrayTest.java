@@ -1073,8 +1073,8 @@ public class JSONArrayTest {
     }
 
     /**
-     * Attempt to create a JSONArray with an unclosed array.
-     * Expects an exception
+     * Create a JSONArray with specified initial capacity.
+     * Expects an exception if the initial capacity is specified as a negative integer 
      */
     @Test
     public void testJSONArrayInt() {
