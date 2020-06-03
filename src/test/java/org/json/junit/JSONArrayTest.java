@@ -2,6 +2,7 @@ package org.json.junit;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -1069,5 +1070,22 @@ public class JSONArrayTest {
         // assert that the new list is mutable
         assertTrue("Removing an entry should succeed", list.remove(2) != null);
         assertTrue("List should have 2 elements", list.size() == 2);
+    }
+
+    /**
+     * Create a JSONArray with specified initial capacity.
+     * Expects an exception if the initial capacity is specified as a negative integer 
+     */
+    @Test
+    public void testJSONArrayInt() {
+    	assertNotNull(new JSONArray(0));
+    	assertNotNull(new JSONArray(10));
+        try {
+        	assertNotNull("Should throw an exception", new JSONArray(-1));
+        } catch (JSONException e) {
+            assertEquals("Expected an exception message", 
+                    "JSONArray initial capacity cannot be negative.",
+                    e.getMessage());
+        }
     }
 }
